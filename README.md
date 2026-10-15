@@ -1,250 +1,303 @@
 # Smart Expense Tracker
 
-A full-stack **MERN** (MongoDB, Express.js, React.js, Node.js) expense management web application designed to track daily spending, visualize financial insights with interactive charts, and organize expenses with multi-criteria filtering and reporting.
+A full-stack MERN application for managing daily expenses, organizing transactions, and understanding spending patterns through a centralized dashboard and interactive visualizations.
+
+## Overview
+
+Smart Expense Tracker is a web-based expense management application built with MongoDB, Express.js, React, and Node.js. It helps users record and manage expenses, review spending statistics, filter transactions, and visualize financial data.
+
+The project demonstrates full-stack web development concepts, including REST APIs, authentication, database integration, CRUD operations, and responsive UI development.
+
+## Screenshots
+
+<!-- Replace these paths with the actual filenames in your screenshot/ folder. -->
+### Dashboard
+![Smart Expense Tracker Dashboard](screenshot/Dashboard.png)
+
+### Expense Form
+![Add Expense Form](screenshot/Expense form.png)
+
+###  Expense List
+![Shows Expense List ](screenshot/Expense list.png)
 
 ---
 
 ## Features
 
-* **User Registration and Login**: Secure account creation and authentication.
-* **JWT Authentication**: Stateless authentication using JSON Web Tokens.
-* **Password Hashing with bcrypt**: Strong password encryption using `bcryptjs` before storage.
-* **Add Expenses**: Record expenses with title, amount, category, date, payment method, and description.
-* **Edit Expenses**: Update existing expense details seamlessly.
-* **Delete Expenses**: Remove unwanted expense records with confirmation prompts.
-* **Expense Search**: Real-time keyword search across expense titles and descriptions.
-* **Expense Filtering**: Filter expenses by category, custom date range, and amount range.
-* **Pagination**: Server-side and client-side pagination for smooth handling of large record sets.
-* **Expense Categories**: Pre-configured categories (Food, Travel, Shopping, Bills, Education, Health, Other).
-* **Dashboard**: Centralized overview displaying key performance metrics and quick summaries.
-* **Monthly Statistics**: Track current vs. previous month spending with Month-over-Month (% MoM) trends.
-* **Category Statistics**: Expense distribution and percentage breakdown by category.
-* **Charts**: Interactive donut and bar charts powered by **Recharts**.
-* **CSV Export**: Export filtered expense records to CSV spreadsheet format.
-* **Protected API Routes**: Backend middleware guarding all private resource endpoints.
-* **Responsive UI**: Clean, mobile-friendly interface built with Tailwind CSS.
+### Authentication and Security
+- User registration and login
+- JSON Web Token (JWT)-based authentication
+- Password hashing using bcryptjs
+- Protected API routes for authenticated users
 
----
+### Expense Management
+- Add, view, edit, and delete expense records
+- Organize transactions by category
+- Record expense details such as title, amount, date, payment method, and description
+- Search and filter expenses, where supported by the application
+- Paginated expense listings
+
+### Dashboard and Analytics
+- Centralized expense dashboard
+- Monthly spending statistics
+- Current-month versus previous-month comparisons
+- Category-wise spending summaries
+- Interactive charts using Recharts
+- CSV export for expense records, if enabled in the current build
+
+### User Interface
+- React-based component architecture
+- Responsive styling with Tailwind CSS
+- Client-side navigation using React Router
+- API communication using Axios
+
+> Note: Verify optional features such as CSV export, advanced filters, and all analytics before presenting them as implemented features.
 
 ## Tech Stack
 
-### Frontend
-* **React** (v18) - UI component library
-* **Vite** - High-performance build tool and dev server
-* **Tailwind CSS** - Utility-first CSS styling
-* **Axios** - HTTP client with request/response interceptors
-* **Recharts** - Composable charting library for React
-* **Lucide React** - Modern, clean icon set
-* **React Router DOM** - Client-side routing and route guarding
-
-### Backend
-* **Node.js** - Server runtime environment
-* **Express.js** - RESTful web framework
-* **MongoDB** - NoSQL database
-* **Mongoose** - Object Data Modeling (ODM) library
-* **jsonwebtoken (JWT)** - Token generation and authentication
-* **bcryptjs** - Password hashing and verification
-* **express-validator** - Request body validation and data sanitization
-* **cors** - Cross-Origin Resource Sharing middleware
-* **dotenv** - Environment variable management
-
----
+| Area | Technologies |
+|---|---|
+| Frontend | React, Vite, Tailwind CSS |
+| Routing | React Router DOM |
+| API communication | Axios |
+| Charts | Recharts |
+| Icons | Lucide React |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Authentication | JWT, bcryptjs |
+| Validation | express-validator |
+| Configuration | dotenv |
+| Version control | Git, GitHub |
 
 ## Project Structure
 
 ```text
 smart-expense-tracker/
-├── package.json               # Root scripts (installation & shortcuts)
-├── .gitignore                 # Git ignore rules for root, backend, & frontend
-├── README.md                  # Project documentation
-│
-├── backend/                   # Node.js + Express API Server
+├── backend/
 │   ├── config/
-│   │   └── db.js              # MongoDB connection via Mongoose
+│   │   └── db.js
 │   ├── controllers/
-│   │   ├── authController.js  # User authentication & profile controllers
-│   │   └── expenseController.js # Expense CRUD, filtering & aggregation analytics
+│   │   ├── authController.js
+│   │   └── expenseController.js
 │   ├── data/
-│   │   └── seedData.js        # Realistic demo database seeder
+│   │   └── seedData.js
 │   ├── middleware/
-│   │   ├── authMiddleware.js  # JWT authentication verification middleware
-│   │   ├── errorMiddleware.js # 404 & centralized error handler
-│   │   └── validatorMiddleware.js # Request payload validation rules
+│   │   ├── authMiddleware.js
+│   │   ├── errorMiddleware.js
+│   │   └── validatorMiddleware.js
 │   ├── models/
-│   │   ├── Expense.js         # Expense Mongoose schema & indexes
-│   │   └── User.js            # User Mongoose schema & password methods
+│   │   ├── Expense.js
+│   │   └── User.js
 │   ├── routes/
-│   │   ├── authRoutes.js      # Auth endpoints (/api/auth)
-│   │   └── expenseRoutes.js   # Expense endpoints (/api/expenses)
-│   ├── .env.example           # Backend environment variable template
-│   ├── package.json           # Backend dependencies & scripts
-│   └── server.js              # Backend server entry point
-│
-└── frontend/                  # React + Vite Frontend Client
-    ├── public/                # Static public assets
-    ├── src/
-    │   ├── components/        # UI components (Charts, Modals, Navbar, Table, etc.)
-    │   ├── context/           # React Context (AuthContext)
-    │   ├── hooks/             # Custom React hooks (useExpenses)
-    │   ├── pages/             # Route views (Dashboard, ExpensesPage, Login, Register, NotFound)
-    │   ├── services/          # API services (api, authService, expenseService)
-    │   ├── App.jsx            # Application root router
-    │   ├── index.css          # Tailwind CSS directives
-    │   └── main.jsx           # React DOM entry point
-    ├── .env.example           # Frontend environment variable template
-    ├── index.html             # HTML entry template
-    ├── package.json           # Frontend dependencies & scripts
-    ├── postcss.config.js      # PostCSS configuration
-    ├── tailwind.config.js     # Tailwind CSS theme configuration
-    └── vite.config.js         # Vite configuration
+│   │   ├── authRoutes.js
+│   │   └── expenseRoutes.js
+│   ├── .env.example
+│   ├── package.json
+│   └── server.js
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── .env.example
+│   ├── package.json
+│   └── vite.config.js
+├── screenshot/
+├── .gitignore
+├── package.json
+└── README.md
 ```
 
----
+*This structure summarizes the existing project layout; filenames may vary slightly by repository version.*
 
-## Installation
+## Getting Started
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd smart-expense-tracker
-   ```
+### Prerequisites
 
-2. **Install dependencies for Backend and Frontend:**
+Install the following before running the project:
 
-   You can install dependencies in each directory individually:
-   ```bash
-   # Install backend dependencies
-   cd backend
-   npm install
+- Node.js and npm
+- MongoDB local installation or a MongoDB Atlas account
+- Git
 
-   # Install frontend dependencies
-   cd ../frontend
-   npm install
-   ```
+### 1. Clone the Repository
 
-   Alternatively, from the project root directory, run:
-   ```bash
-   npm run install-all
-   ```
-
----
-
-## Environment Variables
-
-You must create `.env` configuration files for both the backend and frontend from their respective `.env.example` templates.
-
-### 1. Backend Configuration
-Create `backend/.env`:
 ```bash
-cp backend/.env.example backend/.env
+git clone https://github.com/Shambhavi05-java/smart-expense-tracker.git
+cd smart-expense-tracker
 ```
 
-Contents of `backend/.env`:
+### 2. Install Dependencies
+
+From the project root, run:
+
+```bash
+npm run install-all
+```
+
+If this script is unavailable in your checked-out version, install the dependencies separately:
+
+```bash
+cd backend
+npm install
+
+cd ../frontend
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create environment files using the provided example templates.
+
+**Backend — `backend/.env`**
+
 ```env
 PORT=5000
 NODE_ENV=development
 
 MONGO_URI=mongodb://127.0.0.1:27017/expense_tracker
 
-JWT_SECRET=your_jwt_secret_here
+JWT_SECRET=replace_with_a_long_random_secret
 JWT_EXPIRES_IN=7d
 
 CLIENT_URL=http://localhost:5173
 ```
 
-### 2. Frontend Configuration
-Create `frontend/.env`:
-```bash
-cp frontend/.env.example frontend/.env
-```
+For MongoDB Atlas, replace the local `MONGO_URI` with your own Atlas connection string. Never commit your actual connection string or database password.
 
-Contents of `frontend/.env`:
+**Frontend — `frontend/.env`**
+
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
-> **Note:** `.env` files contain local environment configurations and sensitive variables. They are automatically ignored by Git and must **never** be committed to public repositories.
+If Vite starts on a different port, such as `5174`, update `CLIENT_URL` in `backend/.env` to match the frontend's actual origin, then restart the backend.
 
----
+### 4. Configure MongoDB
 
-## Database Configuration
+You can use either a local MongoDB instance or MongoDB Atlas.
 
-By default, the application is configured to connect to a local MongoDB instance:
-```text
-MONGO_URI=mongodb://127.0.0.1:27017/expense_tracker
-```
+**MongoDB Atlas setup:**
 
-### Using MongoDB Atlas (Cloud)
-To use a cloud-hosted MongoDB Atlas database instead:
-1. Create a cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-2. Create a database user and whitelist your IP address in Network Access.
-3. Obtain your connection string and update `MONGO_URI` in `backend/.env`:
-   ```env
-   MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/expense_tracker?retryWrites=true&w=majority
-   ```
+1. Create a cluster in [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+2. Create a database user.
+3. Configure Network Access for your development environment.
+4. Copy the connection string.
+5. Add the connection string to `MONGO_URI` in `backend/.env`.
 
----
+Keep all credentials private.
 
-## Demo Seed Data
+### 5. Run the Application
 
-The project includes an optional database seed script with sample categorized transactions and a preconfigured demo account.
+Open two terminal windows from the project root.
 
-> ⚠️ **Warning:** Running the seed script executes `deleteMany()` on the `users` and `expenses` collections, which **will permanently delete all existing development data** before inserting the demo dataset.
+**Terminal 1 — Backend**
 
-To seed the database:
 ```bash
 cd backend
-npm run seed
-```
-*(Or from the project root: `npm run seed`)*
-
-### Default Demo Credentials:
-* **Email:** `demo@example.com`
-* **Password:** `password123`
-
----
-
-## Running the Application
-
-To run the application, start the backend server and frontend client in separate terminal windows:
-
-### 1. Start Backend Server
-```bash
-cd backend
-npm install
 npm run dev
 ```
-The backend API server will start on `http://localhost:5000`.
 
-### 2. Start Frontend Client
-In a separate terminal window:
+The backend is configured to use port `5000`.
+
+**Terminal 2 — Frontend**
+
 ```bash
 cd frontend
-npm install
 npm run dev
 ```
-The React development server will start on `http://localhost:5173`.
 
----
+Open the local URL printed by Vite in your terminal.
 
-## API Endpoints Summary
+## API Endpoints
 
-### Authentication (`/api/auth`)
-* `POST /api/auth/register` - Register a new user account
-* `POST /api/auth/login` - Authenticate user credentials and receive JWT
-* `GET /api/auth/me` - Fetch authenticated user profile (Protected)
-* `PUT /api/auth/profile` - Update profile name and currency preference (Protected)
+The following endpoints are documented by the project.
 
-### Expenses (`/api/expenses`)
-* `GET /api/expenses` - Retrieve paginated, filtered, and sorted expenses (Protected)
-* `GET /api/expenses/stats` - Retrieve aggregate spending statistics and chart data (Protected)
-* `GET /api/expenses/:id` - Retrieve single expense details by ID (Protected)
-* `POST /api/expenses` - Create a new expense record (Protected)
-* `PUT /api/expenses/:id` - Update an existing expense record (Protected)
-* `DELETE /api/expenses/:id` - Delete an expense record (Protected)
+### Authentication — `/api/auth`
 
----
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/auth/register` | Register a user |
+| POST | `/api/auth/login` | Authenticate a user |
+| GET | `/api/auth/me` | Retrieve the authenticated user's profile |
+| PUT | `/api/auth/profile` | Update profile information |
+
+### Expenses — `/api/expenses`
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/api/expenses` | Retrieve expenses |
+| GET | `/api/expenses/stats` | Retrieve spending statistics |
+| GET | `/api/expenses/:id` | Retrieve an expense |
+| POST | `/api/expenses` | Create an expense |
+| PUT | `/api/expenses/:id` | Update an expense |
+| DELETE | `/api/expenses/:id` | Delete an expense |
+
+Protected endpoints require valid authentication. Confirm endpoint behavior and request formats in the backend routes before integrating with other clients.
+
+## Demo Data
+
+The project includes an optional seed script for inserting sample users and expenses.
+
+**Warning:** The seed script may delete existing records in the `users` and `expenses` collections before inserting demo data. Do not run it against a database containing data you want to keep.
+
+Run it only against a disposable development database after inspecting `backend/data/seedData.js`:
+
+```bash
+npm run seed
+```
+
+Demo credentials, if enabled in the current version, should be documented only when the corresponding demo account exists. Never publish personal account credentials.
+
+## Security Notes
+
+- Keep `.env` files out of Git.
+- Use a strong, unique JWT secret.
+- Never expose MongoDB credentials in frontend code.
+- Validate and authorize requests on the backend.
+- Use a restricted database account for application access.
+- Do not commit real user or financial data.
+
+## Future Improvements
+
+Potential enhancements include:
+
+- Expense budgets and spending limits
+- Recurring expense management
+- Monthly budget alerts
+- Downloadable financial reports
+- Deployment with a public demo
+- Automated testing for authentication and expense APIs
+
+These are potential improvements, not claims that the features are already implemented.
+
+## What I Learned
+
+This project provides practical experience with:
+
+- Building a full-stack application using the MERN stack
+- Designing and integrating REST APIs
+- Managing MongoDB data with Mongoose
+- Implementing JWT-based authentication
+- Performing create, read, update, and delete operations
+- Connecting a React frontend to a Node.js backend
+- Managing environment variables and application configuration
+- Using Git and GitHub for version control
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This repository references the MIT License. See the [`LICENSE`](LICENSE) file for the applicable terms.
+
+## Author
+
+**Shambhavi Bhargava**
+
+GitHub: [@Shambhavi05-java](https://github.com/Shambhavi05-java)
+
+Project: [Smart Expense Tracker](https://github.com/Shambhavi05-java/smart-expense-tracker)
