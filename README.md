@@ -11,23 +11,28 @@ The project demonstrates full-stack web development concepts, including REST API
 ## Screenshots
 
 ### Dashboard
+
 ![Smart Expense Tracker Dashboard](screenshot/Dashboard .png)
 
 ### Expense Form
+
 ![Add Expense Form](<screenshot/Expense form .png>)
 
 ### Expense List
+
 ![Expense List](<screenshot/Expense list .png>)
 
 ## Features``
 
 ### Authentication and Security
+
 - User registration and login
 - JSON Web Token (JWT)-based authentication
 - Password hashing using bcryptjs
 - Protected API routes for authenticated users
 
 ### Expense Management
+
 - Add, view, edit, and delete expense records
 - Organize transactions by category
 - Record expense details such as title, amount, date, payment method, and description
@@ -35,6 +40,7 @@ The project demonstrates full-stack web development concepts, including REST API
 - Paginated expense listings
 
 ### Dashboard and Analytics
+
 - Centralized expense dashboard
 - Monthly spending statistics
 - Current-month versus previous-month comparisons
@@ -43,6 +49,7 @@ The project demonstrates full-stack web development concepts, including REST API
 - CSV export for expense records, if enabled in the current build
 
 ### User Interface
+
 - React-based component architecture
 - Responsive styling with Tailwind CSS
 - Client-side navigation using React Router
@@ -52,19 +59,19 @@ The project demonstrates full-stack web development concepts, including REST API
 
 ## Tech Stack
 
-| Area | Technologies |
-|---|---|
-| Frontend | React, Vite, Tailwind CSS |
-| Routing | React Router DOM |
-| API communication | Axios |
-| Charts | Recharts |
-| Icons | Lucide React |
-| Backend | Node.js, Express.js |
-| Database | MongoDB, Mongoose |
-| Authentication | JWT, bcryptjs |
-| Validation | express-validator |
-| Configuration | dotenv |
-| Version control | Git, GitHub |
+| Area              | Technologies              |
+| ----------------- | ------------------------- |
+| Frontend          | React, Vite, Tailwind CSS |
+| Routing           | React Router DOM          |
+| API communication | Axios                     |
+| Charts            | Recharts                  |
+| Icons             | Lucide React              |
+| Backend           | Node.js, Express.js       |
+| Database          | MongoDB, Mongoose         |
+| Authentication    | JWT, bcryptjs             |
+| Validation        | express-validator         |
+| Configuration     | dotenv                    |
+| Version control   | Git, GitHub               |
 
 ## Project Structure
 
@@ -111,7 +118,7 @@ smart-expense-tracker/
 └── README.md
 ```
 
-*This structure summarizes the existing project layout; filenames may vary slightly by repository version.*
+_This structure summarizes the existing project layout; filenames may vary slightly by repository version._
 
 ## Getting Started
 
@@ -218,23 +225,23 @@ The following endpoints are documented by the project.
 
 ### Authentication — `/api/auth`
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| POST | `/api/auth/register` | Register a user |
-| POST | `/api/auth/login` | Authenticate a user |
-| GET | `/api/auth/me` | Retrieve the authenticated user's profile |
-| PUT | `/api/auth/profile` | Update profile information |
+| Method | Endpoint             | Purpose                                   |
+| ------ | -------------------- | ----------------------------------------- |
+| POST   | `/api/auth/register` | Register a user                           |
+| POST   | `/api/auth/login`    | Authenticate a user                       |
+| GET    | `/api/auth/me`       | Retrieve the authenticated user's profile |
+| PUT    | `/api/auth/profile`  | Update profile information                |
 
 ### Expenses — `/api/expenses`
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/api/expenses` | Retrieve expenses |
-| GET | `/api/expenses/stats` | Retrieve spending statistics |
-| GET | `/api/expenses/:id` | Retrieve an expense |
-| POST | `/api/expenses` | Create an expense |
-| PUT | `/api/expenses/:id` | Update an expense |
-| DELETE | `/api/expenses/:id` | Delete an expense |
+| Method | Endpoint              | Purpose                      |
+| ------ | --------------------- | ---------------------------- |
+| GET    | `/api/expenses`       | Retrieve expenses            |
+| GET    | `/api/expenses/stats` | Retrieve spending statistics |
+| GET    | `/api/expenses/:id`   | Retrieve an expense          |
+| POST   | `/api/expenses`       | Create an expense            |
+| PUT    | `/api/expenses/:id`   | Update an expense            |
+| DELETE | `/api/expenses/:id`   | Delete an expense            |
 
 Protected endpoints require valid authentication. Confirm endpoint behavior and request formats in the backend routes before integrating with other clients.
 
