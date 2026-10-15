@@ -12,7 +12,7 @@ The project demonstrates full-stack web development concepts, including REST API
 
 ### Dashboard
 
-![Smart Expense Tracker Dashboard](screenshot/Dashboard .png)
+![Smart Expense Tracker Dashboard](<screenshot/Dashboard .png>)
 
 ### Expense Form
 
