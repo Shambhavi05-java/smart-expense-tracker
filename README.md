@@ -11,15 +11,15 @@ The project demonstrates full-stack web development concepts, including REST API
 ## Screenshots
 
 ### Dashboard
-![Smart Expense Tracker Dashboard](screenshot/Dashboard.png)
+![Smart Expense Tracker Dashboard](screenshot/Dashboard .png)
 
 ### Expense Form
-![Add Expense Form](<screenshot/Expense form.png>)
+![Add Expense Form](<screenshot/Expense form .png>)
 
 ### Expense List
-![Expense List](<screenshot/Expense list.png>)
+![Expense List](<screenshot/Expense list .png>)
 
-## Features
+## Features``
 
 ### Authentication and Security
 - User registration and login
