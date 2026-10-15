@@ -10,17 +10,14 @@ The project demonstrates full-stack web development concepts, including REST API
 
 ## Screenshots
 
-<!-- Replace these paths with the actual filenames in your screenshot/ folder. -->
 ### Dashboard
 ![Smart Expense Tracker Dashboard](screenshot/Dashboard.png)
 
 ### Expense Form
-![Add Expense Form](screenshot/Expense form.png)
+![Add Expense Form](<screenshot/Expense form.png>)
 
-###  Expense List
-![Shows Expense List ](screenshot/Expense list.png)
-
----
+### Expense List
+![Expense List](<screenshot/Expense list.png>)
 
 ## Features
 
